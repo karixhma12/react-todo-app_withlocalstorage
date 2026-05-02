@@ -92,13 +92,17 @@ function App(){
 
                  : 
                   <>
-                    {todo.text}
-                    <button onClick={()=>{deleteTodo(todo.id)}}> Delete </button>
-                    <button onClick = {()=>{
-                                        setEditTodo(todo.text);
-                                        setEditingId(todo.id);}}> 
-                                        Edit 
-                    </button>
+                    <span className="todo-text">
+                      {todo.text}
+                    </span>
+                    <div classname="todo-buttons">    
+                      <button onClick={()=>{deleteTodo(todo.id)}}> Delete </button>
+                      <button onClick = {()=>{
+                                          setEditTodo(todo.text);
+                                          setEditingId(todo.id);}}> 
+                                          Edit 
+                      </button>
+                    </div>  
                   </>  
                 }
                 
