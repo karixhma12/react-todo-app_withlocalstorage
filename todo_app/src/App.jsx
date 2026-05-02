@@ -4,10 +4,21 @@ import {useRef} from "react";
 
 
 function App(){
-    const [todos, setTodos] = useState([]);
+    
     const [todoText,setTodoText] = useState("");
     const [editingId, setEditingId] = useState(null);
     const [editTodo,setEditTodo] = useState("");
+
+    //load todos from localStorage as the initial state 
+    const [todos,setTodos] = useState(()=>{
+      const saved = localStorage.getItem("todos");
+      return saved ? JSON.parse(saved) : [];
+    })
+
+    //save to LocalStorage whenever there is a change in the todos array 
+    useEffect(()=>{
+      localStorage.setItem("todos",JSON.stringify(todos));
+    },[todos])
 
     function addTodo(){
       const todo = {
@@ -50,7 +61,13 @@ function App(){
     return(
       <>
         <h1> Todo App </h1>
-        <input type="text" placeholder="enter your todo" value={todoText} onChange={e=>{setTodoText(e.target.value)}}></input>
+        <input type="text" placeholder="enter your todo" value={todoText} onChange={e=>{setTodoText(e.target.value)}} onKeyDown={
+          e=>{
+            if(e.key==="Enter"){
+              addTodo();
+            }
+          }
+        }></input>
         <button onClick={addTodo}> Add Todo </button>
         <ul>
           {todos.map((todo)=>{
@@ -59,7 +76,13 @@ function App(){
 
                { (editingId===todo.id) ? 
                   <>
-                    <input value={editTodo} onChange={e=>setEditTodo(e.target.value)}></input>
+                    <input value={editTodo} onChange={e=>setEditTodo(e.target.value)} onKeyDown={
+                      e=>{
+                        if(e.key==="Enter"){
+                          editTodoFunc(todo.id)
+                        }
+                      }
+                    }></input>
                     <button onClick={()=>{editTodoFunc(todo.id)}}> Save </button>
                     <button onClick={()=>setEditingId(null)}> Cancel </button>
                   </>  
