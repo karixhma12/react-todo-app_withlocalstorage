@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {useEffect} from "react";
-import {useRef} from "react"; 
+import "./App.css";
 
 
 function App(){
@@ -59,7 +59,8 @@ function App(){
     }
 
     return(
-      <>
+      <div className="container">
+        <>
         <h1> Todo App </h1>
         <input type="text" placeholder="enter your todo" value={todoText} onChange={e=>{setTodoText(e.target.value)}} onKeyDown={
           e=>{
@@ -105,7 +106,8 @@ function App(){
           
         </ul>
         
-      </>
+        </>
+      </div>
     )
 }
 
