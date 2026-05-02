@@ -62,14 +62,16 @@ function App(){
       <div className="container">
         <>
         <h1> Todo App </h1>
-        <input type="text" placeholder="enter your todo" value={todoText} onChange={e=>{setTodoText(e.target.value)}} onKeyDown={
-          e=>{
-            if(e.key==="Enter"){
-              addTodo();
+        <div className="input-row">
+          <input type="text" placeholder="enter your todo" value={todoText} onChange={e=>{setTodoText(e.target.value)}} onKeyDown={
+            e=>{
+              if(e.key==="Enter"){
+                addTodo();
+              }
             }
-          }
-        }></input>
-        <button onClick={addTodo}> Add Todo </button>
+          }></input>
+          <button onClick={addTodo}> Add Todo </button>
+        </div>  
         <ul>
           {todos.map((todo)=>{
             return(

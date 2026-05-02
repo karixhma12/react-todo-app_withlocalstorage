@@ -31,3 +31,30 @@ h1{
   margin-bottom : 24px;
   text-align: center;
 }
+
+.input-row{
+  display: flex;
+  gap:8px;
+  margin-bottom: 24px;
+}
+
+.input-row input{
+  flex: 1;
+  padding:10px 16px;
+  border: 2px solid #FFB3B3;
+  border-radius: 12px;
+  font-size: 1rem;
+  outline: none;
+  background:white;
+}
+
+.input-row button{
+  padding: 10px 20px;
+  background-color: #FF6B6B;
+  color:white;
+  border:none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
