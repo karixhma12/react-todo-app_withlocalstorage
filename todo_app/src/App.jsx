@@ -86,8 +86,8 @@ function App(){
                         }
                       }
                     }></input>
-                    <button onClick={()=>{editTodoFunc(todo.id)}}> Save </button>
-                    <button onClick={()=>setEditingId(null)}> Cancel </button>
+                    <button className="btn-save" onClick={()=>{editTodoFunc(todo.id)}}> Save </button>
+                    <button className="btn-cancel" onClick={()=>setEditingId(null)}> Cancel </button>
                   </>  
 
                  : 
@@ -96,8 +96,8 @@ function App(){
                       {todo.text}
                     </span>
                     <div classname="todo-buttons">    
-                      <button onClick={()=>{deleteTodo(todo.id)}}> Delete </button>
-                      <button onClick = {()=>{
+                      <button className="btn-delete" onClick={()=>{deleteTodo(todo.id)}}> Delete </button>
+                      <button className="btn-edit" onClick = {()=>{
                                           setEditTodo(todo.text);
                                           setEditingId(todo.id);}}> 
                                           Edit 
