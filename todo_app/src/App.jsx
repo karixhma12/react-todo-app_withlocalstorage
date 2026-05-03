@@ -58,6 +58,18 @@ function App(){
       
     }
 
+    function toggleTodo(id){
+      const newTodo = todos.map((todo)=>{
+        if(todo.id===id){
+          return {...todo, done: !todo.done}
+        }
+        else{
+          return todo;
+        }
+      })
+      setTodos(newTodo);
+    }
+
     return(
       <div className="container">
         <>
@@ -92,7 +104,7 @@ function App(){
 
                  : 
                   <>
-                    <span className="todo-text">
+                    <span className="todo-text" onClick={()=>{toggleTodo(todo.id)}} style={{textDecoration: todo.done ? "line-through" : "none", opacity: todo.done? 0.5 : 1}}>
                       {todo.text}
                     </span>
                     <div classname="todo-buttons">    
